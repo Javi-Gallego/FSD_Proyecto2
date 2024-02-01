@@ -1,0 +1,185 @@
+* {
+    margin: 0;
+    padding: 0;
+
+    box-sizing: border-box;
+}
+
+header {
+    background-color: darkgrey;
+    height: 5em;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 3em;
+}
+
+.fondo {
+    height: 79vh;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+}
+
+.separacion1 {
+    height: 1em;
+}
+
+.row {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+#pantalla {
+   margin: 0;
+   padding: 0;
+}
+
+.containerTV {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.formaTV {
+    height: 20em;
+    width: 100%;
+}
+.supFrame, .infFrame {
+    background-color: black;
+    margin: 0;
+    padding: 0;
+}
+
+.supFrame {
+    height: 1em;
+}
+
+.infFrame {
+    height: 2em;
+}
+
+.leftFrame, .rightFrame {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    background-color: black;
+    padding: 3px;
+    height: 20em;
+}
+
+.rightFrame img, .leftFrame img {
+    height: 18em;
+    width: 80%;
+}
+
+.ladoIzq {
+    width: 100%;
+}
+
+.altavoz {
+    background-color: darkgrey;
+}
+
+.screen {
+    background-color: black;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    height: 20em;
+}
+
+.oculto {
+    display: none;
+}    
+
+.visible {
+    display: block;
+}
+
+.marca {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end;
+
+    color: white;
+}
+
+.anchoLed {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.ledTV {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.ledLight {
+    background-color: chartreuse;
+
+    border-radius: 0.5em;
+    height: 0.8em;
+    width: 0.8em;
+    color: white;
+}
+
+.mando {
+    background-color: dimgrey;
+
+    margin: 0;
+    padding: 0;
+    gap: 2em;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.chanBtn {
+    background-color: darkgray;
+    height: 3em;
+    width: 3em;
+    border-radius: 50%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    color: white;
+    font-weight: bold;
+}
+
+#btnOnOff img {
+    height: 1.5em;
+    width: 1.5em;
+}
+
+footer {
+    background-color: darkgrey;
+    height: 5em;
+}
+
+.marpad0 {
+    margin: 0;
+    padding: 0;
+}

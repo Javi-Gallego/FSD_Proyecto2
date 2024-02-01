@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="./img/icon.png">
     <title>Bootcamp FSD - Proyecto 2</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -14,19 +15,59 @@
         <div class="title">Televisión loca</div>
     </header>
 
-    <section>
-        <div class="conteiner-fluid">
-            
-        </div>
-        <div id="pantalla">
+    <div class="separacion1"></div>
 
-        </div>
-    </section>
     <section>
-        <div id="mando">
+        <div class="container-fluid fondo">
+            <div class="row h-100">
+                <div class="col-1"></div>
+                
+                <div id="pantalla" class="col-7">
+                    <div class="container-fluid containerTV">
+                        <div class="row formaTV">
+                            <div class="col-12 supFrame"></div>
+                            <div class="col-1 leftFrame">
+                                <img src="./img/altavoz.png" class="img-fluid" alt="speaker">
+                            </div> 
+                            <div class="col-10 screen">
+                                <video id="canal1" src="./img/DragonBall_valenciano.mp4"  class="oculto" height="300em" autoplay controls loop></video>
+                                <video id="canal2" src="./img/GameOfThrones.mp4"  class="oculto" height="300em" autoplay controls loop></video>
+                            </div>
+                            <div class="col-1 rightFrame">
+                                <img src="./img/altavoz.png" class="img-fluid" alt="speaker">
+                            </div>
+                            <div class="col-12 infFrame">
+                                <div class="container-fluid mardpad0">
+                                    <div class="row anchoLed">
+                                        <div class="col-1"></div>
+                                        <div class="col-10 marca">Samsung</div>
+                                        <div class="col-1 ledTv">
+                                            <div class="ledLight"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
+                <div class="col-1"></div> 
+                
+                <div class="col-2 mando">
+                    <div id="btnOnOff" class="chanBtn">
+                        <img src="./img/botonOnOff.png" alt="Apagado">
+                    </div>
+                    <div id="channel1" class="chanBtn">1</div>
+                    <div id="channel2" class="chanBtn">2</div>
+                </div>
+                
+                <div class="col-1"></div>
+            </div>          
         </div>
+
     </section>
+
+    <div class="separacion1"></div>
 
     <footer>
         <div>Todos los derechos reservados</div>
