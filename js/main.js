@@ -9,9 +9,12 @@ var TVon = false;
 onoffButton.addEventListener("click", () => {
     TVon = true
     chann1.classList.add("visible")
+    chann1.play()
 })
 
 chann1Button.addEventListener("click", () => {
+    chann2.pause()
+    chann1.play()
     chann1.classList.add("visible")
     chann1.classList.remove("oculto")
     chann2.classList.add("oculto")
@@ -21,6 +24,8 @@ chann1Button.addEventListener("click", () => {
 })
 
 chann2Button.addEventListener("click", () => {
+    chann1.pause()
+    chann2.play()
     chann2.classList.add("visible")
     chann2.classList.remove("oculto")
     chann1.classList.remove("visible")
