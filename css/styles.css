@@ -143,13 +143,13 @@ header {
 
 .mando {
     background-color: dimgrey;
-
     margin: 0;
     padding: 0;
     gap: 2em;
 
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
 }
@@ -169,7 +169,7 @@ header {
     font-weight: bold;
 }
 
-#btnOnOff img {
+#btnOnOff img, #btnMute img {
     height: 1.5em;
     width: 1.5em;
 }
