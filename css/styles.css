@@ -133,12 +133,18 @@ header {
 }
 
 .ledLight {
-    background-color: chartreuse;
-
     border-radius: 0.5em;
     height: 0.8em;
     width: 0.8em;
     color: white;
+}
+
+.ledOn {
+    background-color: chartreuse;
+}
+
+.ledOff {
+    background-color: rgb(149, 22, 22);
 }
 
 .mando {

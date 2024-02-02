@@ -10,17 +10,24 @@ var chann1 = document.getElementById("canal1")
 var chann2 = document.getElementById("canal2")
 var chann3 = document.getElementById("canal3")
 var chann4 = document.getElementById("canal4")
+var ledTv = document.getElementById("TVled")
 
 var TVon = false;
 
 onoffButton.addEventListener("click", () => {
-    if (TVon === false) {
 
-    chann1.classList.add("visible")
-    chann1.play()
-    TVon = true
+    if (TVon === false) {           
+        ledTv.classList.remove("ledOff")
+        ledTv.classList.add("ledOn")
+        chann1.classList.add("visible")
+        chann1.classList.remove("oculto")
+        chann1.play()
+        TVon = true
+        return
     }
     if (TVon === true) {
+        ledTv.classList.remove("ledOn")
+        ledTv.classList.add("ledOff")
         chann1.pause()
         chann2.pause()
         chann3.pause()
