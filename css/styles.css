@@ -8,13 +8,12 @@
 body {
     margin: 0;
     padding: 0;
-
 }
 
 header {
     background-color: darkgrey;
     height: 5em;
-    width: 100vw;
+    width: 99vw;
 
     display: flex;
     flex-direction: row;
@@ -23,20 +22,21 @@ header {
 }
 
 .title {
-    width: 100vw;
+    width: 99vw;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 3em;
 }
 
 .fondo {
-    height: 55vh;
-    width: 100vw;
+    height: 80vh;
+    width: 99vw;
     margin: 0;
     padding: 0;
 }
 
 .separacion1 {
     height: 1em;
+    width: 99vw;
 }
 
 .row {
@@ -85,6 +85,10 @@ header {
     padding: 0 1em;
 }
 
+.loader {
+    padding: 0 1.05em;
+}
+
 .supFrame, .infFrame {
     background-color: black;
     margin: 0;
@@ -99,29 +103,8 @@ header {
     height: 2em;
 }
 
-.leftFrame, .rightFrame {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-
-    background-color: black;
-    padding: 3px;
-    height: 100%;
-    width: 7%
-}
-
-/* .rightFrame img, .leftFrame img {
-    height: 80%;
-    width: 80%;
-} */
-
 .ladoIzq {
     width: 100%;
-}
-
-.altavoz {
-    background-color: darkgrey;
 }
 
 .screen {
@@ -131,9 +114,6 @@ header {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-
-    /* height: 20em;
-    width: ; */
 }
 
 .canal {
@@ -150,6 +130,7 @@ header {
 }
 
 .marca {
+    width: 80%;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -162,14 +143,19 @@ header {
     margin: 0;
     padding: 0;
     width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 
 .ledTV {
-    width: 100%;
+    width: 10%;
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
-    align-items: flex-end;
+    justify-content: center;
+    align-items: center;
 }
 
 .ledLight {
@@ -187,18 +173,60 @@ header {
     background-color: rgb(149, 22, 22);
 }
 
-.mando {
-    background-color: dimgrey;
+.anchoMando {
     margin: 0;
     padding: 0;
-    gap: 2em;
-    aspect-ratio: 0.25;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.mando {
+    background-color: rgb(81, 81, 81);
+    margin: 0;
+    padding: 0;
+    gap: 0.2em;
+    aspect-ratio: 0.4;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.mandoSup {
+    height: 15%;
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.mandoMed {
+    height: 30%;
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.mandoInf {
+    height: 55%;
+    width: 100%;
 
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
+    gap: 1em;
+    pad: 2em 0;
 }
 
 .chanBtn {
@@ -223,7 +251,8 @@ header {
 
 footer {
     background-color: darkgrey;
-    height: 5em;
+    height: 3em;
+    width: 100%;
 }
 
 .marpad0 {

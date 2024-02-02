@@ -1,4 +1,55 @@
+let channelList = [
+    {
+        "name": "canal1",
+        "logo": "La 2",
+        "encendido": "false",
+    },
+    {
+        "name": "canal2",
+        "logo": "Antena 3",
+        "encendido": "false",
+    },
+    {
+        "name": "canal3",
+        "logo": "Canal 9",
+        "encendido": "false",
+    },
+    {
+        "name": "canal4",
+        "logo": "HBO",
+        "encendido": "false",
+    },
+    {
+        "name": "canal5",
+        "logo": "Canal+",
+        "encendido": "false",
+    },
+    {
+        "name": "canal6",
+        "logo": "No signal",
+        "encendido": "false",
+    },
+    {
+        "name": "canal7",
+        "logo": "No signal",
+        "encendido": "false",
+    },
+    {
+        "name": "canal8",
+        "logo": "No signal",
+        "encendido": "false",
+    },
+    {
+        "name": "canal9",
+        "logo": "No signal",
+        "encendido": "false",
+    },
+]
 
+console.log(channelList[0].name)
+console.log(channelList[3].logo)
+
+let TVon = false
 
 var onoffButton = document.getElementById("btnOnOff")
 var chann1Button = document.getElementById("channel1")
@@ -12,7 +63,6 @@ var chann3 = document.getElementById("canal3")
 var chann4 = document.getElementById("canal4")
 var ledTv = document.getElementById("TVled")
 
-var TVon = false;
 
 onoffButton.addEventListener("click", () => {
 
