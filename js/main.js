@@ -204,6 +204,16 @@ const gestionVolumen = (boton) => {
     let canal = document.getElementById(channel)
 
     canal.volume = actualVolume/10
+
+    const barraVol = document.getElementById("volume")
+
+    barraVol.classList.remove("oculto")
+    barraVol.classList.add("visible")
+
+    setTimeout( () => {
+        barraVol.classList.add("oculto")
+        barraVol.classList.remove("visible")
+    }, 3000)
 }
 
 const gestionCanales = (boton) => {

@@ -130,16 +130,14 @@ header {
     align-items: center;
     
     border: 0.2em solid green;
-    background-color: green;
     position: absolute;
     bottom: 2.5em;
     right: 2em;
 
 }
 
-.volActual {
+#volActual {
     height: 100%;
-    width: 100%;
 
     background-color: green;
 }
