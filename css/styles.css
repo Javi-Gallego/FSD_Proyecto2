@@ -128,17 +128,20 @@ header {
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
+    
     border: 0.2em solid green;
+    background-color: green;
     position: absolute;
     bottom: 2.5em;
-    right: 2em;   
-    z-index: 2;
+    right: 2em;
+
 }
 
 .volActual {
-    background-color: green;
     height: 100%;
     width: 100%;
+
+    background-color: green;
 }
 
 .vol1 {
@@ -393,4 +396,27 @@ footer {
 .marpad0 {
     margin: 0;
     padding: 0;
+}
+
+#volumeee {
+    height: 4em;
+    width: 20em;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+    position: relative;
+
+    border: 0.3em solid green;
+}
+
+#volActualee {
+    height: 100%;
+    width: 80%;
+    position: absolute;
+    bottom: 1em;
+
+    background-color: green;
 }

@@ -94,7 +94,9 @@ arrayBtn.map(
             if(canal.id === "btnVolUp" || canal.id === "btnVolDown") {
                 gestionVolumen(canal.id)
             }
-
+            if(canal.id === "btnChUp" || canal.id === "btnChDown") {
+                gestionCanales(canal.id)
+            }
         })
     }
 )
@@ -181,18 +183,54 @@ const Info = () => {
 }
 
 const gestionVolumen = (boton) => {
-    if(boton === btnVolUp && actualVolume < 10) {
+
+    oldclass = "vol" + actualVolume
+
+    if(boton === "btnVolUp" && actualVolume < 10) {
         actualVolume++
     }
 
-    if(boton === btnVolDown && actualVolume > 0) {
+    if(boton === "btnVolDown" && actualVolume > 0) {
         actualVolume--
     }
+
+    let newclass = "vol" + actualVolume
     const barraVolumen = document.getElementById("volActual")
 
-    barraVolumen.classList.remove
+    barraVolumen.classList.remove(oldclass)
+    barraVolumen.classList.add(newclass)
 
+    let channel = "canal" + actualChannel
+    let canal = document.getElementById(channel)
 
+    canal.volume = actualVolume/10
+}
+
+const gestionCanales = (boton) => {
+    console.log(boton)
+    const screenOn = document.getElementById("screen")
+    let mute = ""
+
+    if(boton === "btnChUp" && actualChannel < 9) {
+        console.log("hepa")
+        actualChannel++
+    }
+
+    if(boton === "btnChUp" && actualChannel === 9) {
+        actualChannel = 0
+    }
+
+    if(boton === "btnChDown" && actualChannel > 0) {
+        actualChannel--
+    }
+
+    if(boton === "btnChDown" && actualChannel === 0) {
+        actualChannel = 9
+    }
+
+    MUTEon ? mute = "muted" : mute = ""
+
+    screenOn.innerHTML = `<video id="canal${actualChannel}" src="./videos/v${actualChannel}.mp4" class="canal" height="300em" autoplay ${mute} loop=""></video>`
 }
 
 
