@@ -61,6 +61,7 @@ actualChannel variable que sabe en qué canal está */
 var TVon = false
 var MUTEon = false
 var actualChannel = ""
+var actualVolume = 10
 
 /* Aquí metemos todos los botones en el htmlCollection(btn) y luego lo pasamos
 al array(arrayBtn) para poder mapearlos y, dependiendo del botón pulsado,
@@ -84,6 +85,16 @@ arrayBtn.map(
             if(e.target.classList[1] === "numBtn") {
                 changeChannel(canal.id)
             }
+            if(canal.id === "btnInfo") {
+                Info()
+            }
+            if(canal.id === "btnMenu") {
+                Menu()
+            }
+            if(canal.id === "btnVolUp" || canal.id === "btnVolDown") {
+                gestionVolumen(canal.id)
+            }
+
         })
     }
 )
@@ -97,9 +108,12 @@ const onOff = () => {
         screenOn.innerHTML = `<img src="./img/loaderGHTV.gif" class="loader" alt="Loader">`
         setTimeout( () => {
             screenOn.innerHTML = `<video id="canal1" src="./videos/v1.mp4" class="canal" height="300em" autoplay loop=""></video>`
-        }, 5000)
+        }, 100)
         TVon = true
         channelList[1].encendido = true
+        actualChannel = 1
+        const jaja = document.getElementById("canal2")
+
         return
     }
     if (TVon === true) {
@@ -121,9 +135,12 @@ const changeChannel = (canal) => {
 
         screenOn.innerHTML = `<video id="canal${channNum}" src="./videos/v${channNum}.mp4" class="canal" height="300em" autoplay ${mute} loop=""></video>`
 
+        actualChannel = channNum
+
         for (let i = 0; i <= channelList.length; i++) {
                 channNum == i ? channelList[i].encendido = true : channelList[i].encendido = false
-        }       
+        }
+        actualChannel = channNum
     }
 }
 
@@ -145,6 +162,37 @@ const Mute = () => {
             }
         }
     }
+}
+
+const Info = () => {
+    let meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"]
+    const barraInfo = document.getElementById("info")
+    let hora = new Date();
+
+    barraInfo.innerHTML = `${channelList[actualChannel].logo}     ${hora.getDate()}  ${meses[hora.getMonth()]}  ${hora.getHours()}:${hora.getMinutes()}`
+
+    barraInfo.classList.add("visible")
+    barraInfo.classList.remove("oculto")
+
+    setTimeout( () => {
+        barraInfo.classList.add("oculto")
+        barraInfo.classList.remove("visible")
+    }, 3000)
+}
+
+const gestionVolumen = (boton) => {
+    if(boton === btnVolUp && actualVolume < 10) {
+        actualVolume++
+    }
+
+    if(boton === btnVolDown && actualVolume > 0) {
+        actualVolume--
+    }
+    const barraVolumen = document.getElementById("volActual")
+
+    barraVolumen.classList.remove
+
+
 }
 
 

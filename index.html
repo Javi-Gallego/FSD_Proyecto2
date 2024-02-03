@@ -12,7 +12,7 @@
 </head>
 <body>
     <header>
-        <div class="title">Televisión loca</div>
+        <div class="title">GeeksHubs TV</div>
     </header>
 
     <div class="separacion1"></div>
@@ -25,7 +25,9 @@
                 <div id="pantalla" class="col-7">
                     <div class="containerTV ratio ratio-16x9">
                         <div class="formaTV">
-                            <div class="supFrame"></div>
+                            <div class="supFrame">
+                                <div id="info" class="visible"></div>
+                            </div>
                             <div id="screen" class="screen ratio ratio-16x9">
                                 <!-- <img src="./img/loaderGHTV.gif" class="loader" alt="Loader">
                                 <video id="canal1" src="./img/v3.mp4"  class="canal oculto" height="300em" loop></video>
@@ -34,6 +36,9 @@
                                 <video id="canal4" src="./img/v1.mp4"  class="canal oculto" height="300em" loop></video> -->
                             </div>
                             <div class="infFrame">
+                                <div id="volume" class="visible">
+                                    <div id="volActual" class="vol10"></div>
+                                </div>
                                 <div class="mardpad0">
                                     <div class="anchoLed">
                                         <div class="ledTv"></div>
@@ -54,31 +59,32 @@
                     <div class="anchoMando">
                     <div class="mando">
                         <div class="sectionSep"></div>
-                        <div class="mandoSup bg-danger">
+                        <div class="mandoSup">
                             <div id="btnOnOff" class="chanBtn"></div>
                             <div id="btnMute" class="chanBtn"></div>
                         </div>
-                        <div class="mandoMed"></div>
+                        <div class="mandoMed">
                             <div class="sectionSep"></div>
                             <div class="middleBut">
-                                <div class="chanBtn">+</div>
-                                <div></div>
-                                <div class="chanBtn">+</div>
+                                <div id="btnVolUp" class="chanBtn">+</div>
+                                <div id="btnChUp" class="chanBtn">+</div>
                             </div>
                             <div class="middleBut">
-                                <div></div>
-                                <div></div>
-                                <div></div>
+                                <div>Vol</div>
+                                <div>Ch</div>
                             </div>
                             <div class="middleBut">
-                                <div class="chanBtn">-</div>
-                                <div></div>
-                                <div class="chanBtn">-</div>
+                                <div id="btnVolDown"class="chanBtn">-</div>
+                                <div id="btnChDown"class="chanBtn">-</div>
                             </div>
-                            <div class="middleSep"></div>
-                            <div class="middleBut"></div>
                             <div class="sectionSep"></div>
-                        <div class="mandoInf bg-danger">
+                            <div class="sectionSep"></div>
+                            <div class="middleBut">
+                                <div id="btnInfo" class="chanBtn"></div>
+                                <div id="btnMenu" class="chanBtn"></div>
+                            </div>
+                        </div>
+                        <div class="mandoInf">
                             <div id="channel1" class="chanBtn numBtn">1</div>
                             <div id="channel2" class="chanBtn numBtn">2</div>
                             <div id="channel3" class="chanBtn numBtn">3</div>
