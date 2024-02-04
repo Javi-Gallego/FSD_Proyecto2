@@ -11,7 +11,6 @@ body {
 }
 
 header {
-    background-color: darkgrey;
     height: 5em;
     width: 99vw;
 
@@ -19,16 +18,18 @@ header {
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    text-align: center;
 }
 
 .title {
-    width: 99vw;
+    width: 100vw;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 3em;
+    color: rgb(247, 22, 22);
 }
 
 .fondo {
-    height: 80vh;
+    height: 100vh;
     width: 99vw;
     margin: 0;
     padding: 0;
@@ -36,6 +37,10 @@ header {
 
 .separacion1 {
     height: 1em;
+    width: 99vw;
+}
+.separacion5 {
+    height: 5em;
     width: 99vw;
 }
 
@@ -95,10 +100,12 @@ header {
 
 .supFrame {
     height: 1em;
+    background: linear-gradient(to bottom, rgba(254,254,254,1) 0%, rgba(209,209,209,1) 4%, rgba(219,219,219,1) 11%, rgba(0,0,0,1) 27%, rgba(0,0,0,1) 43%);
 }
 
 .infFrame {
     height: 2em;
+    background: linear-gradient(to bottom, rgba(76,76,76,1) 0%, rgba(44,44,44,1) 1%, rgba(0,0,0,1) 18%, rgba(0,0,0,1) 51%, rgba(17,17,17,1) 60%, rgba(71,71,71,1) 61%, rgba(43,43,43,1) 76%, rgba(102,102,102,1) 86%, rgba(28,28,28,1) 91%, rgba(19,19,19,1) 100%);
 }
 
 #info {
@@ -265,7 +272,7 @@ header {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
 
     position: relative;
 }
@@ -361,7 +368,7 @@ header {
 
 .chanBtn:hover {
     scale: 0.9;
-    box-shadow: 0px 0px 20px 2px rgba(255,255,255,1);
+    box-shadow: 0px 0px 26px 1px rgb(104, 104, 104);
 }
 
 #btnOnOff {
@@ -388,6 +395,12 @@ footer {
     background-color: darkgrey;
     height: 3em;
     width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: end;
 }
 
 .marpad0 {
@@ -402,5 +415,53 @@ footer {
 @media (width < 768px) {
     .hidden {
         display: block;
+    }
+
+    .mando {
+        margin: 0;
+        padding: 0;
+        gap: 0.2em;
+        width: 7em;
+        height: 22em;
+    }
+
+    .chanBtn {
+        height: 1.5em;
+        width: 1.5em;
+
+        box-shadow: 0px 0px 0px 0px rgba(112,111,112,1);
+    }
+
+    .chanBtn:hover {
+        scale: 0.9;
+        box-shadow: 0px 0px 0px 0px rgb(104, 104, 104);
+    }
+
+    .sectionSep {
+        height: 0.1em;
+    }
+    
+    .middleSep {
+        height: 0em;
+    }
+
+    .mandoSup {
+        gap: 0.5em;
+        padding: 0;
+    }
+    
+    .mandoMed {
+        gap: 0.5em;
+        padding: 0.5em 0;
+    }
+
+    .mandoInf {
+        gap: 0.5em;
+        padding: 0;
+    }
+    
+    #volume {
+        height: 1.5em;
+        width: 10em;
     }
 }

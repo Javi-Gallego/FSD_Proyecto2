@@ -110,7 +110,7 @@ const onOff = () => {
         screenOn.innerHTML = `<img src="./img/loaderGHTV.gif" class="loader" alt="Loader">`
         setTimeout( () => {
             screenOn.innerHTML = `<video id="canal1" src="./videos/v1.mp4" class="canal" height="300em" autoplay loop=""></video>`
-        }, 100)
+        }, 3000)
         TVon = true
         channelList[1].encendido = true
         actualChannel = 1
