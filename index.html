@@ -24,7 +24,9 @@
                     <div class="containerTV ratio ratio-16x9">
                         <div class="formaTV">
                             <div class="supFrame">
-                                <div id="info" class="visible"></div>
+                                <div id="info" class="visible">
+                                    <div class="fondoInfo"></div>
+                                </div>
                             </div>
                             <div id="screen" class="screen ratio ratio-16x9">
                                 <!-- <img src="./img/loaderGHTV.gif" class="loader" alt="Loader">
@@ -55,33 +57,50 @@
                 <div class="col-3 hidden"></div>
                 
                 <div class="col-6 col-md-2">
-                    <div class="anchoMando">
+                    <div id="controller" class="anchoMando">
                     <div class="mando">
-                        <div class="sectionSep"></div>
                         <div class="mandoSup">
-                            <div id="btnOnOff" class="chanBtn"></div>
+                            <div id="btnOnOff" class="chanBtn onBtn"></div>
+                            <div id="btnLed"></div>
                             <div id="btnMute" class="chanBtn"></div>
                         </div>
+                        <div class="sectionSep"></div>
                         <div class="mandoMed">
-                            <div class="sectionSep"></div>
-                            <div class="middleBut">
-                                <div id="btnVolUp" class="chanBtn">+</div>
-                                <div id="btnChUp" class="chanBtn">+</div>
-                            </div>
-                            <div class="middleBut">
-                                <div>Vol</div>
-                                <div>Ch</div>
-                            </div>
-                            <div class="middleBut">
-                                <div id="btnVolDown"class="chanBtn">-</div>
-                                <div id="btnChDown"class="chanBtn">-</div>
-                            </div>
-                            <div class="sectionSep"></div>
-                            <div class="sectionSep"></div>
                             <div class="middleBut">
                                 <div id="btnInfo" class="chanBtn"></div>
                                 <div id="btnMenu" class="chanBtn"></div>
                             </div>
+                            <div class="sectionSep"></div>
+                            <div class="middleBut">
+                                <div id="btnVolUp" class="chanBtn squareBtn">+</div>
+                                <div>Vol</div>
+                                <div id="btnVolDown"class="chanBtn squareBtn">-</div>                             
+                            </div>
+                            <!-- <div class="middleBut">
+                                <div>Vol</div>
+                                <div>Ch</div>
+                            </div> -->
+                            <div class="middleBut">
+                                <div id="btnChUp" class="chanBtn squareBtn">+</div>
+                                <div>Ch</div>
+                                <div id="btnChDown"class="chanBtn squareBtn">-</div>
+                            </div>
+                            <div class="sectionSep"></div>
+                            <div class="middleBut">
+                                <div></div>
+                                <div id="btnUp" class="chanBtn"></div>
+                                <div></div>                             
+                            </div>
+                            <div class="middleBut">
+                                <div id="btnLeft" class="chanBtn"></div>
+                                <div id="btnOK" class="chanBtn">OK</div>
+                                <div id="btnRight" class="chanBtn"></div>                             
+                            </div>
+                            <div class="middleBut">
+                                <div></div>
+                                <div id="btnDown" class="chanBtn"></div>
+                                <div></div>                             
+                            </div>                           
                         </div>
                         <div class="mandoInf">
                             <div id="channel1" class="chanBtn numBtn">1</div>
@@ -106,7 +125,6 @@
 
     </section>
 
-    <div class="separacion5"></div>
     <div class="separacion5"></div>
 
     <footer>

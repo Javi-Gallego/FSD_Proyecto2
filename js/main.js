@@ -53,15 +53,16 @@ let channelList = [
     },
 ]
 
-/*No sé si es buena práctica pero considero estas tres variables globales a todo el programa y me gustaría poder acceder a ella desde diferentes funciones y que los cambios que se hagasn en esas funciones se apliquen al total.
+/*Estas cuatro variables son globales a todo el programa y se puede acceder a ellas desde diferentes funciones y que los cambios se apliquen al total.
 TVon variable para saber si la tele está encendida o apagada
 MUTEon variable que recuerda si el canal anterior estaba silenciado
-actualChannel variable que sabe en qué canal está */
+actualChannel variable que sabe en qué canal está
+actualVolume para saber el nivel de volumen actual */
 
-var TVon = false
-var MUTEon = false
-var actualChannel = ""
-var actualVolume = 10
+let TVon = false
+let MUTEon = false
+let actualChannel = ""
+let actualVolume = 10
 
 
 /* Aquí metemos todos los botones en el htmlCollection(btn) y luego lo pasamos
@@ -102,6 +103,17 @@ arrayBtn.map(
     }
 )
 
+/*Todas las funciones llaman a esta para que se encienda el led superior que indica que se ha pulsado un botón*/
+const mandoLed = () => {
+    const led = document.getElementById("btnLed")
+
+    led.classList.add("ledOn")
+
+    setTimeout( () => {
+        led.classList.remove("ledOn")
+    }, 200)
+}
+
 /*Función de encendido y apagado de la TV. En "screen" se añade lo que se ve en la pantalla de la tele. Si está apagada se muestra un gif que hace de loader y a los 3sg se pone el canal 1 por defecto. */
 const onOff = () => {
     const screenOn = document.getElementById("screen") 
@@ -117,7 +129,7 @@ const onOff = () => {
         TVon = true
         channelList[1].encendido = true
         actualChannel = 1
-
+        mandoLed()
         return
     }
     if (TVon === true) {
@@ -126,6 +138,7 @@ const onOff = () => {
         ledTv.classList.remove("ledOn")
         TVon = false
     }
+    mandoLed()
 }
 
 /*Con esta función se cambian los canales cuando se da en los números.
@@ -148,12 +161,14 @@ const changeChannel = (canal) => {
         }
         actualChannel = channNum
     }
+    mandoLed()
 }
 
 /* Función para silenciar los vídeos. Primero se recorre el array de canales para ver cual está encendido, luego cogemos el id del vídeo y miramos si está muteado o no y le cambiamos el estado */
 const Mute = () => {
     const screenOn = document.getElementById("screen")
 
+    mandoLed()
     for (let i = 0; i <= channelList.length; i++) {
 
         if(channelList[i].encendido === true){
@@ -186,41 +201,47 @@ const Info = () => {
         barraInfo.classList.add("oculto")
         barraInfo.classList.remove("visible")
     }, 3000)
+
+    mandoLed()
 }
 
 /* Hay diez niveles de volumen, para que se vea se han hecho 10 clases diferentes que tienen un ancho en % diferente, por eso al principio guardamos la clase que tiene así luego se borra y se le añade la nueva. También se comprueba que no se pueda subir más el volumen si ya está en 10 y que no se pueda bajar si ya está a 0. Para cambiarle el volumen se divide el resultado entre 10 porque el volumen va de 0 a 1. Como la ventana de info, se muestra el volumen en pantalla 3s y luego se vuelve a ocultar */
 const gestionVolumen = (boton) => {
 
-    let oldclass = "vol" + actualVolume
+    mandoLed()
 
-    if(boton === "btnVolUp" && actualVolume < 10) {
-        actualVolume++
+    if(TVon) {
+        let oldclass = "vol" + actualVolume
+
+        if(boton === "btnVolUp" && actualVolume < 10) {
+            actualVolume++
+        }
+
+        if(boton === "btnVolDown" && actualVolume > 0) {
+            actualVolume--
+        }
+
+        let newclass = "vol" + actualVolume
+        const barraVolumen = document.getElementById("volActual")
+
+        barraVolumen.classList.remove(oldclass)
+        barraVolumen.classList.add(newclass)
+
+        let channel = "canal" + actualChannel
+        let canal = document.getElementById(channel)
+
+        canal.volume = actualVolume/10
+
+        const barraVol = document.getElementById("volume")
+
+        barraVol.classList.remove("oculto")
+        barraVol.classList.add("visible")
+
+        setTimeout( () => {
+            barraVol.classList.add("oculto")
+            barraVol.classList.remove("visible")
+        }, 3000)
     }
-
-    if(boton === "btnVolDown" && actualVolume > 0) {
-        actualVolume--
-    }
-
-    let newclass = "vol" + actualVolume
-    const barraVolumen = document.getElementById("volActual")
-
-    barraVolumen.classList.remove(oldclass)
-    barraVolumen.classList.add(newclass)
-
-    let channel = "canal" + actualChannel
-    let canal = document.getElementById(channel)
-
-    canal.volume = actualVolume/10
-
-    const barraVol = document.getElementById("volume")
-
-    barraVol.classList.remove("oculto")
-    barraVol.classList.add("visible")
-
-    setTimeout( () => {
-        barraVol.classList.add("oculto")
-        barraVol.classList.remove("visible")
-    }, 3000)
 }
 
 /*cambio de canales cuando se hace desde los botones de canal+ y canal-. Parecido al metodo de introducir por numero. Se tiene en cuenta si el canal anterior estaba silenciado. Si ya está en el canal 9 y se suma uno se pasa al canal 0 y comienza el ciclo. Al contrario si estamos en el canal 0 y bajamos uno más. */
@@ -229,23 +250,27 @@ const gestionCanales = (boton) => {
     const screenOn = document.getElementById("screen")
     let mute = ""
 
-    if(boton === "btnChUp" && actualChannel < 9) {
-        actualChannel++
+    if(TVon) {  
+        if(boton === "btnChUp" && actualChannel < 9) {
+            actualChannel++
+        }
+
+        if(boton === "btnChUp" && actualChannel === 9) {
+            actualChannel = 0
+        }
+
+        if(boton === "btnChDown" && actualChannel > 0) {
+            actualChannel--
+        }
+
+        if(boton === "btnChDown" && actualChannel === 0) {
+            actualChannel = 9
+        }
+
+        MUTEon ? mute = "muted" : mute = ""
+
+        screenOn.innerHTML = `<video id="canal${actualChannel}" src="./videos/v${actualChannel}.mp4" class="canal" height="300em" autoplay ${mute} loop=""></video>`
     }
 
-    if(boton === "btnChUp" && actualChannel === 9) {
-        actualChannel = 0
-    }
-
-    if(boton === "btnChDown" && actualChannel > 0) {
-        actualChannel--
-    }
-
-    if(boton === "btnChDown" && actualChannel === 0) {
-        actualChannel = 9
-    }
-
-    MUTEon ? mute = "muted" : mute = ""
-
-    screenOn.innerHTML = `<video id="canal${actualChannel}" src="./videos/v${actualChannel}.mp4" class="canal" height="300em" autoplay ${mute} loop=""></video>`
+    mandoLed()
 }
