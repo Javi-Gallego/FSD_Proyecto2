@@ -63,6 +63,7 @@ var MUTEon = false
 var actualChannel = ""
 var actualVolume = 10
 
+
 /* Aquí metemos todos los botones en el htmlCollection(btn) y luego lo pasamos
 al array(arrayBtn) para poder mapearlos y, dependiendo del botón pulsado,
 llamar a la función correspondiente*/
@@ -101,8 +102,10 @@ arrayBtn.map(
     }
 )
 
+/*Función de encendido y apagado de la TV. En "screen" se añade lo que se ve en la pantalla de la tele. Si está apagada se muestra un gif que hace de loader y a los 3sg se pone el canal 1 por defecto. */
 const onOff = () => {
     const screenOn = document.getElementById("screen") 
+    const ledTv = document.getElementById("TVled")
 
     if(TVon === false) {
         ledTv.classList.remove("ledOff")
@@ -114,7 +117,6 @@ const onOff = () => {
         TVon = true
         channelList[1].encendido = true
         actualChannel = 1
-        const jaja = document.getElementById("canal2")
 
         return
     }
@@ -126,12 +128,14 @@ const onOff = () => {
     }
 }
 
+/*Con esta función se cambian los canales cuando se da en los números.
+Solo pone el canal en pantalla si la tv está encendida y tiene en cuenta si se silenció un canal antes para que el nuevo siga silenciado, además se actualiza en el array de canales cual es el que está encendido */
 const changeChannel = (canal) => {
     const screenOn = document.getElementById("screen")
 
     let channNum = canal.slice(-1)
     let mute = ""
-    console.log("Encendido: " + channelList[channNum].encendido)
+
     if(TVon){     
         MUTEon ? mute = "muted" : mute = ""
 
@@ -146,6 +150,7 @@ const changeChannel = (canal) => {
     }
 }
 
+/* Función para silenciar los vídeos. Primero se recorre el array de canales para ver cual está encendido, luego cogemos el id del vídeo y miramos si está muteado o no y le cambiamos el estado */
 const Mute = () => {
     const screenOn = document.getElementById("screen")
 
@@ -166,6 +171,7 @@ const Mute = () => {
     }
 }
 
+/*Se hace un array con los meses porque el getMonth devuelve un número y así cuando, se concatena con el resto de la fecha y con el nombre del canal que se saca del array de canales. La pantalla de info se muestra 3s y luego se vuelve a ocultar */
 const Info = () => {
     let meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"]
     const barraInfo = document.getElementById("info")
@@ -182,9 +188,10 @@ const Info = () => {
     }, 3000)
 }
 
+/* Hay diez niveles de volumen, para que se vea se han hecho 10 clases diferentes que tienen un ancho en % diferente, por eso al principio guardamos la clase que tiene así luego se borra y se le añade la nueva. También se comprueba que no se pueda subir más el volumen si ya está en 10 y que no se pueda bajar si ya está a 0. Para cambiarle el volumen se divide el resultado entre 10 porque el volumen va de 0 a 1. Como la ventana de info, se muestra el volumen en pantalla 3s y luego se vuelve a ocultar */
 const gestionVolumen = (boton) => {
 
-    oldclass = "vol" + actualVolume
+    let oldclass = "vol" + actualVolume
 
     if(boton === "btnVolUp" && actualVolume < 10) {
         actualVolume++
@@ -216,13 +223,13 @@ const gestionVolumen = (boton) => {
     }, 3000)
 }
 
+/*cambio de canales cuando se hace desde los botones de canal+ y canal-. Parecido al metodo de introducir por numero. Se tiene en cuenta si el canal anterior estaba silenciado. Si ya está en el canal 9 y se suma uno se pasa al canal 0 y comienza el ciclo. Al contrario si estamos en el canal 0 y bajamos uno más. */
 const gestionCanales = (boton) => {
-    console.log(boton)
+
     const screenOn = document.getElementById("screen")
     let mute = ""
 
     if(boton === "btnChUp" && actualChannel < 9) {
-        console.log("hepa")
         actualChannel++
     }
 
@@ -242,91 +249,3 @@ const gestionCanales = (boton) => {
 
     screenOn.innerHTML = `<video id="canal${actualChannel}" src="./videos/v${actualChannel}.mp4" class="canal" height="300em" autoplay ${mute} loop=""></video>`
 }
-
-
-var onoffButton = document.getElementById("btnOnOff")
-var chann1Button = document.getElementById("channel1")
-var chann2Button = document.getElementById("channel2")
-var chann3Button = document.getElementById("channel3")
-var chann4Button = document.getElementById("channel4")
-var muteButton = document.getElementById("btnMute")
-var chann1 = document.getElementById("canal1")
-var chann2 = document.getElementById("canal2")
-var chann3 = document.getElementById("canal3")
-var chann4 = document.getElementById("canal4")
-var ledTv = document.getElementById("TVled")
-
-// chann1Button.addEventListener("click", () => {
-//     if(!chann2.paused) {
-//     chann2.pause()
-//     }
-//     if(!chann3.paused) {
-//         chann3.pause()
-//     }
-//     chann2.classList.remove("visible")
-//     chann2.classList.add("oculto")
-//     chann3.classList.remove("visible")  
-//     chann3.classList.add("oculto")
-//     chann4.classList.remove("visible")
-//     chann4.classList.add("oculto")
-//     chann1.classList.remove("oculto")
-//     chann1.classList.add("visible")
-//     chann1.play()
-// })
-
-// chann2Button.addEventListener("click", () => {
-//     chann1.pause()
-//     chann3.pause()
-//     chann2.play()
-//     chann2.classList.add("visible")
-//     chann2.classList.remove("oculto")
-//     chann1.classList.remove("visible")
-//     chann1.classList.add("oculto")
-//     chann3.classList.add("oculto")
-//     chann3.classList.remove("visible")
-//     chann4.classList.add("oculto")
-//     chann4.classList.remove("visible")
-// })
-
-// chann3Button.addEventListener("click", () => {
-//     chann1.pause()
-//     chann2.pause()
-//     chann3.play()
-//     chann3.classList.add("visible")
-//     chann3.classList.remove("oculto")
-//     chann1.classList.remove("visible")
-//     chann1.classList.add("oculto")
-//     chann2.classList.add("oculto")
-//     chann2.classList.remove("visible")
-//     chann4.classList.add("oculto")
-//     chann4.classList.remove("visible")
-// })
-
-/*funcion on off antes de cambiar innerhtml
-
-if(TVon === false) {
-    ledTv.classList.remove("ledOff")
-    ledTv.classList.add("ledOn")
-    chann1.classList.add("visible")
-    chann1.classList.remove("oculto")
-    chann1.play()
-    TVon = true
-    return
-}
-if (TVon === true) {
-    ledTv.classList.remove("ledOn")
-    ledTv.classList.add("ledOff")
-    chann1.pause()
-    chann2.pause()
-    chann3.pause()
-    chann4.pause()
-    chann1.classList.remove("visible")
-    chann1.classList.add("oculto")
-    chann2.classList.add("oculto")
-    chann2.classList.remove("visible")
-    chann3.classList.add("oculto")
-    chann3.classList.remove("visible")
-    chann4.classList.add("oculto")
-    chann4.classList.remove("visible")
-    TVon = false
-}*/
