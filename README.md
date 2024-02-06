@@ -2,7 +2,7 @@
 
 # Interactive TV :tv:
 
-Welcome to the 1st project for the GeeksHubs Academy. It consists of a little web of a restaurant in which we can see their food and get in contact with them. The office is a real restaurant in Calicanto.
+Welcome to the 2nd project for the GeeksHubs Academy. It consists on an interactive TV. Once you switch on the TV you can change channels, turn up/down volume or add a parental control.
 
 ## Table of Contents 🗂️
 
