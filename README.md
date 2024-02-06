@@ -38,6 +38,7 @@ If you try to enter a restricted channel you must enter the password with the nu
 
 INFO: the sixth channel (Horror TV) is the only one with parental restrictions and the password is "123"
 
+It was a challenge to add the parental control as I had to solve a lot of problems. When I implemented it the features that already worked started to do strange things (buttons like mute or change channels did not work after some combinations like activate parental control and close the menu) and it was impossible to write the password and when you tried to write a numbre you could change channel once and then it bloqued and did not let you switch channels more. I wished to add the channels list or fix some things but I did not have time.
 
 
 ## <a id="autor">Author ✒️</a>
@@ -49,3 +50,5 @@ INFO: the sixth channel (Horror TV) is the only one with parental restrictions a
 
 - **Add a channels list** - 
 - **Solve channel restart** - When you close the menu the video of the channel restarts, it would be better to play it without interruptions
+- **Responsive design** - Although it includes a responsive design it can improve a lot.
+- **Videos from the start** - In the first version of the TV all the videos were loaded at once and you could change between them. The one you were watching had the "visible" class and the other ones the "oculto" class. That was good because you could pause the video, switch channels and then return to a channel you already watched and start playing where you stopped. In the actual version you only load the video you are watching, it is ligther to load but on the other hand you have to watch from the start each time you change channels. Maybe it is a good idea to save at least the last channel so it is more tv like if you return to it.
