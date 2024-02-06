@@ -85,6 +85,7 @@ header {
 .screen {
     background-color: black;
     padding: 0 1em;
+    position: relative;
 }
 
 .loader {
@@ -127,15 +128,77 @@ header {
     color: white;
 }
 
-.fondoInfo {
-    height: 100%;
+#menu {
+    border: 2px solid white;
+    background-color: dimgrey;
+    width: 20em;
+    height: 8em;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    position: absolute;
+    top: 2em;
+    left: 2em;
+    color: white;
+
+    font-weight: bold;
+    font-size: 1.5em;
+    z-index: 1;
+}
+
+#menuParental {
+    border: 2px solid white;
+    background-color: dimgrey;
+    width: 27em;
+    height: 10em;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    position: absolute;
+    top: 2em;
+    left: 2em;
+    color: white;
+
+    font-weight: bold;
+    font-size: 1.3em;
+    z-index: 1;
+}
+
+.filaMenu {
+    height: 33%;
     width: 100%;
-    background-color: dimgray;
-    opacity: .6;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center; 
+    gap: 1em;
+}
+
+.menuOpt {
+    height: 1.8em;
+    width: 8em;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.seleccionOn {
+    background-color: rgb(198, 198, 198);
+    border: 2px solid rgb(5, 5, 5);
+    scale: 1.2;
 }
 
 #volume {
-    height: 3em;
+    height: 1em;
     width: 20em;
 
     display: flex;
@@ -143,7 +206,8 @@ header {
     justify-content: flex-start;
     align-items: center;
     
-    border: 0.2em solid green;
+    border: 0.2em solid rgb(255, 255, 255);
+    background-color: white;
     position: absolute;
     bottom: 2.5em;
     right: 2em;
@@ -153,7 +217,7 @@ header {
 #volActual {
     height: 100%;
 
-    background-color: green;
+    background-color: rgb(17, 0, 45);
 }
 
 .vol1 {
@@ -207,6 +271,7 @@ header {
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    text-align: center;
 }
 
 .canal {
@@ -288,8 +353,8 @@ header {
     margin: 0;
     padding: 0;
     gap: 0.2em;
-    width: 13em;
-    height: 43em;
+    width: 11em;
+    height: 34em;
 
     position: absolute;
     display: flex;
@@ -361,8 +426,8 @@ header {
 
 .chanBtn {
     background-color: darkgray;
-    height: 2.5em;
-    width: 2.5em;
+    height: 1.8em;
+    width: 1.8em;
     border-radius: 50%;
     box-shadow: inset -1px -1px 5px 1px rgb(95, 95, 95);
     /* box-shadow: inset -8px -6px 25px 4px rgba(112,111,112,1); */
@@ -466,6 +531,12 @@ footer {
     display: none;
 }
 
+@media (width < 1000px) {
+    #menu {
+        font-size: 1.2em;
+    }
+}
+
 @media (width < 768px) {
     .hidden {
         display: block;
@@ -475,8 +546,8 @@ footer {
         margin: 0;
         padding: 0;
         gap: 0.2em;
-        width: 7em;
-        height: 22em;
+        width: 7.4em;
+        height: 27em;
     }
 
     .chanBtn {
@@ -518,4 +589,29 @@ footer {
         height: 1.5em;
         width: 10em;
     }
+}
+
+@media (width < 560px) {
+    #menu {
+        font-size: 1em;
+    }
+}
+
+@media (width < 460px) {
+    #menu {
+        font-size: .8em;
+    }
+}
+
+
+@media (width < 370px) {
+    #menu {
+        font-size: .6em;
+    }
+}
+
+@media (width <= 360px) {
+    .anchoMando {
+        height: 36em;
+    } 
 }

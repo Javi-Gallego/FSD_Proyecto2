@@ -11,9 +11,6 @@
     <link rel="stylesheet" href="./css/styles.css">
 </head>
 <body>
-    <header>
-        <div class="title">GeeksHubs TV</div>
-    </header>
 
     <section>
         <div class="container-fluid fondo">
@@ -24,16 +21,20 @@
                     <div class="containerTV ratio ratio-16x9">
                         <div class="formaTV">
                             <div class="supFrame">
-                                <div id="info" class="visible">
-                                    <div class="fondoInfo"></div>
-                                </div>
+                                <div id="info" class="oculto"></div>
                             </div>
                             <div id="screen" class="screen ratio ratio-16x9">
-                                <!-- <img src="./img/loaderGHTV.gif" class="loader" alt="Loader">
-                                <video id="canal1" src="./img/v3.mp4"  class="canal oculto" height="300em" loop></video>
-                                <video id="canal2" src="./img/v5.mp4"  class="canal oculto" height="300em" loop></video>
-                                <video id="canal3" src="./img/v4.mp4"  class="canal oculto" height="300em" loop></video>
-                                <video id="canal4" src="./img/v1.mp4"  class="canal oculto" height="300em" loop></video> -->
+                                <div id="menu" class="oculto">
+                                    <div class="filaMenu">MENU</div>
+                                    <div class="filaMenu">
+                                        <div id="canales" class="menuOpt seleccionOn">Canales</div>
+                                        <div id="config" class="menuOpt">Config</div>
+                                    </div>
+                                    <div class="filaMenu">
+                                        <div id="parental" class="menuOpt">Control parental</div>
+                                        <div id="otros" class="menuOpt">Otros</div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="infFrame">
                                 <div id="volume" class="oculto">
@@ -76,13 +77,9 @@
                                 <div>Vol</div>
                                 <div id="btnVolDown"class="chanBtn squareBtn">-</div>                             
                             </div>
-                            <!-- <div class="middleBut">
-                                <div>Vol</div>
-                                <div>Ch</div>
-                            </div> -->
                             <div class="middleBut">
                                 <div id="btnChUp" class="chanBtn squareBtn">+</div>
-                                <div>Ch</div>
+                                <div>CH</div>
                                 <div id="btnChDown"class="chanBtn squareBtn">-</div>
                             </div>
                             <div class="sectionSep"></div>
@@ -124,12 +121,6 @@
         </div>
 
     </section>
-
-    <div class="separacion5"></div>
-
-    <footer>
-        <div>Desarrollado por Javier Gallego</div>
-    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
