@@ -122,28 +122,37 @@ arrayBtn.map(
                 if(canal.id === "btnMute") {
                     Mute()
                 }
-                if(e.target.classList[1] === "numBtn" && !MenuPassword) {
+                if(e.target.classList[1] === "numBtn" && !MenuPassword && !Menuon) {
+                    console.log("Caso 1")
                     changeChannel(canal.id)
                 }
                 if(canal.id === "btnInfo") {
+                    console.log("Caso 2")
                     Info()
                 }
                 if(canal.id === "btnMenu") {
+                    console.log("Caso 3")
                     Menu()
                 }
-                if(canal.id === "btnVolUp" || canal.id === "btnVolDown") {
+                if((canal.id === "btnVolUp" || canal.id === "btnVolDown")  && !MenuPassword) {
+                    console.log("Caso 4")
                     gestionVolumen(canal.id)
                 }
-                if(canal.id === "btnChUp" || canal.id === "btnChDown" && !MenuPassword) {
+                if((canal.id === "btnChUp" || canal.id === "btnChDown") && !MenuPassword && !Menuon) {
+                    console.log("Caso 5")
                     gestionCanales(canal.id)
                 }
                 if(((canal.id ) === "btnUp" || (canal.id ) === "btnDown" || (canal.id ) === "btnLeft" || (canal.id ) === "btnRight" || (canal.id ) === "btnOK" || (e.target.classList[1] === "numBtn")) && Menuparental) {
+                    console.log("Caso 6")
                     menuParental(canal.id)
                 }
                 if(((canal.id ) === "btnUp" || (canal.id ) === "btnDown" || (canal.id ) === "btnLeft" || (canal.id ) === "btnRight" || (canal.id ) === "btnOK") && Menuon) {
+                    console.log("Caso 7")
                     gestionMenu(canal.id)
                 }
-                if(e.target.classList[1] === "numBtn" || canal.id === "btnOK" || canal.id === "btnLeft" && menuPassword) {
+                console.log((e.target.classList[1] === "numBtn" || canal.id === "btnOK" || canal.id === "btnLeft") && MenuPassword && parentalControl)
+                if((e.target.classList[1] === "numBtn" || canal.id === "btnOK" || canal.id === "btnLeft") && MenuPassword && parentalControl) {
+                    console.log("Caso 8")
                     putPassword(canal.id)
                 }
             }
@@ -173,7 +182,7 @@ const onOff = () => {
         screenOn.innerHTML = `<img src="./img/loaderGHTV.gif" class="loader" alt="Loader">`
         setTimeout( () => {
             screenOn.innerHTML = `${writeMenu}${writeParental}<video id="canal1" src="./videos/v1.mp4" class="canal" height="300em" autoplay loop=""></video>`
-        }, 30)
+        }, 3000)
         TVon = true
         channelList[1].encendido = true
         actualChannel = 1
@@ -196,6 +205,7 @@ const changeChannel = (canal) => {
     let mute = ""
 
     if(channelList[channNum].parental && parentalControl){
+        console.log("Has activado el pass con el canal: " + channNum)
         MenuPassword = true
         CanalProhibido = channNum
         screenOn.innerHTML = `<div id="menu" class="visible">
@@ -221,7 +231,7 @@ const changeChannel = (canal) => {
 
     barraInfo.classList.add("visible")
     barraInfo.classList.remove("oculto")
-    console.log(" hola " + channelList[actualChannel].logo)
+
     setTimeout( () => {
         barraInfo.classList.add("oculto")
         barraInfo.classList.remove("visible")
@@ -470,7 +480,7 @@ const menuParental = (boton) => {
         parentalControl = true
         parentalControl ? controlActivo = "activado" : controlActivo = "desactivado"
 
-        menPar.innerHTML = `<div>El control parental está ${controlActivo} y la contraseña es: 6123</div>`
+        menPar.innerHTML = `<div>El control parental está ${controlActivo} y la contraseña es: 123</div>`
         setTimeout( () => {
             screenOn.innerHTML = `<div id="menu" class="visible">
             <div class="filaMenu">MENU</div>
@@ -492,7 +502,6 @@ const menuParental = (boton) => {
         return
     }
     if (boton === "btnOK" && quitaCon.classList.contains("seleccionOn")) {
-        console.log("quitar")
         parentalControl = false
         parentalControl ? controlActivo = "activado" : controlActivo = "desactivado"
         screenOn.innerHTML = `${writeMenu}${writeParental}<video id="canal${actualChannel}" src="./videos/v${actualChannel}.mp4" class="canal" height="300em" autoplay loop=""></video>`
@@ -515,26 +524,28 @@ const menuParental = (boton) => {
 const putPassword = (canal) => {
     const password = document.getElementById("pass")
     const screenOn = document.getElementById("screen")
-    const REALPASS = 6123;
+    const REALPASS = 123;
     const num = canal.slice(-1)
-    
+
     if(canal === "btnLeft") {
+        console.log("borrado")
         password.value = ""
     }
 
-    password.value += num
-
+    if (!isNaN(num)) {
+        password.value += num
+    }
+    
     if(canal === "btnOK" && parseInt(password.value) === REALPASS) {
         screenOn.innerHTML = `<div id="menu" class="visible">
         <div class="filaMenu">Contraseña correcta!!</div>
-        <div class="filaMenu">Puedes ver el canal ${channelList[channNum].logo}</div>`
+        <div class="filaMenu">Puedes ver el canal ${channelList[CanalProhibido].logo}</div>`
+    
+
+        setTimeout( () => {
+            screenOn.innerHTML = `${writeMenu}${writeParental}<video id="canal${CanalProhibido}" src="./videos/v${CanalProhibido}.mp4" class="canal" height="300em" autoplay loop=""></video>`
+        }, 2000)
+
+        MenuPassword = false
     }
-
-    setTimeout( () => {
-        screenOn.innerHTML = `${writeMenu}${writeParental}<video id="canal${CanalProhibido}" src="./videos/v${CanalProhibido}.mp4" class="canal" height="300em" autoplay loop=""></video>`
-    }, 2000)
-    console.log("valor num: " + num)
-    console.log("valor pass: " + password.value)
-
-
 }
